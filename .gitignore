@@ -1,0 +1,18 @@
+# IDE
+.idea/
+.vscode/
+
+# Maven
+**/target/
+
+# Environment / secrets
+.env
+.env.*
+application-local.yaml
+application-local.yml
+**/*service-account*.json
+**/*credentials*.json
+
+# OS
+.DS_Store
+Thumbs.db
