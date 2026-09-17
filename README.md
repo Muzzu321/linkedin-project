@@ -377,32 +377,6 @@ POST   /core/reject/{userId}
 POST   /file
 GET    /file/{fileName}
 ```
-## Testing & Reliability
-
-The platform uses automated testing to validate service-level business logic,
-API behavior, and interactions between distributed components.
-
-### Testing Areas
-
-- Unit testing for service and business logic
-- REST API testing for service endpoints
-- Authentication and authorization testing
-- Kafka event processing validation
-- Microservice integration testing
-- File upload and retrieval testing
-
-### Reliability Considerations
-
-The distributed architecture addresses reliability through:
-
-- Asynchronous event processing with Apache Kafka
-- Independent service boundaries
-- JWT-based request authentication
-- Kubernetes-managed service workloads
-- Distributed tracing with Zipkin
-- Centralized logging through the ELK stack
-
-
 ## Tech Stack
 
 | Category | Technologies |
