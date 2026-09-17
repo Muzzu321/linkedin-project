@@ -102,3 +102,28 @@ Posts Service ───────┐
 Connections Service ─┼──► Kafka ──► Notification Service
                      │
 User Service ────────┘
+```
+## Data Model & Persistence
+
+The platform uses PostgreSQL for persistent service data. Each business service
+maintains its own domain-specific data and exposes access through its service
+APIs rather than sharing database access across services.
+
+Key persistence areas include:
+
+- **Users & Profiles** — user accounts, authentication data, and profile information
+- **Posts** — user-created posts and post metadata
+- **Connections** — connection requests and professional relationships
+- **Notifications** — notification records generated from application events
+- **Media Metadata** — references and metadata associated with uploaded images
+
+The service-level separation keeps user, post, connection, and notification data
+within their respective business domains.
+
+### Persistence Flow
+
+```text
+User Service ──────────► PostgreSQL
+Posts Service ─────────► PostgreSQL
+Connections Service ───► PostgreSQL
+Notification Service ──► PostgreSQL
