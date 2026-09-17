@@ -46,3 +46,59 @@ The application is split into independent microservices:
 ## Architecture Diagram
 
 <img width="1200" alt="LinkedIn Microservices Architecture" src="https://github.com/user-attachments/assets/0433da9c-f062-48ab-a511-5029293517d3" />
+
+## Core Workflows
+
+The platform supports three primary workflows across the microservices:
+user management, social interactions, and event-driven notifications.
+
+### User & Profile Workflow
+
+User registration, authentication, and profile management are handled by the
+User Service.
+
+1. The client sends a request through the API Gateway.
+2. The API Gateway routes the request to the User Service.
+3. The User Service processes the user or profile operation.
+4. User data is persisted in PostgreSQL.
+5. The response is returned through the API Gateway.
+
+### Post Workflow
+
+Posts are managed by the Posts Service, while media uploads are handled by the
+Uploader Service.
+
+1. A user submits a post through the API Gateway.
+2. The Posts Service creates and persists the post.
+3. Images are uploaded through the Uploader Service when required.
+4. Users can like posts.
+5. Relevant events are published through Kafka.
+
+### Connection Workflow
+
+Connection requests are managed by the Connections Service.
+
+1. A user sends a connection request to another user.
+2. The API Gateway routes the request to the Connections Service.
+3. The connection request is persisted.
+4. The recipient can accept the request.
+5. Connection events are published through Kafka.
+6. Notification Service processes the corresponding event.
+
+### Notification Workflow
+
+Notification processing is handled asynchronously through Apache Kafka.
+
+Notifications can be triggered by events such as:
+
+- Connection requests
+- Accepted connection requests
+- New posts from connections
+- Likes on posts
+
+```text
+Posts Service ───────┐
+                     │
+Connections Service ─┼──► Kafka ──► Notification Service
+                     │
+User Service ────────┘
