@@ -295,3 +295,35 @@ API Gateway
               ▼
             Zipkin
 ```
+## Design Patterns
+
+The platform uses several architectural patterns to support service
+independence, asynchronous processing, and maintainability.
+
+| Pattern | Purpose |
+|---|---|
+| API Gateway | Provides a single entry point for client requests and routes traffic to backend services |
+| Service Discovery | Enables services to discover registered service instances |
+| OpenFeign | Provides declarative REST clients for synchronous service communication |
+| Event-Driven Architecture | Decouples asynchronous operations through Apache Kafka |
+| Microservice Architecture | Separates business capabilities into independently deployable services |
+| JWT Authentication | Provides stateless authentication across protected APIs |
+| Dedicated Media Service | Separates file-upload responsibilities from core business services |
+
+## Tech Stack
+
+| Category | Technologies |
+|---|---|
+| Language | Java |
+| Framework | Spring Boot, Spring Cloud |
+| API | REST |
+| Service Communication | OpenFeign |
+| Messaging | Apache Kafka |
+| Database | PostgreSQL |
+| Security | JWT |
+| Service Discovery | Eureka |
+| Containers | Docker |
+| Orchestration | Kubernetes |
+| Logging | ELK Stack |
+| Distributed Tracing | Zipkin |
+| Build | Maven |
