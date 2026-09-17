@@ -127,3 +127,30 @@ User Service ──────────► PostgreSQL
 Posts Service ─────────► PostgreSQL
 Connections Service ───► PostgreSQL
 Notification Service ──► PostgreSQL
+```
+## Service Communication
+
+The platform uses both synchronous and asynchronous communication between
+microservices.
+
+Synchronous communication is used for request-driven operations that require
+an immediate response, while Apache Kafka is used for asynchronous,
+event-driven workflows.
+
+### Synchronous Communication
+
+Spring Cloud OpenFeign is used for service-to-service REST communication.
+
+```text
+Client
+  │
+  ▼
+API Gateway
+  │
+  ▼
+Business Service
+  │
+  │ OpenFeign / REST
+  ▼
+Another Microservice
+```
