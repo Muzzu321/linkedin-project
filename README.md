@@ -182,3 +182,116 @@ User Service
              ▼
        Protected Services
 ```
+## Event-Driven Notifications
+
+The Notification Service processes application events asynchronously through
+Apache Kafka.
+
+Instead of coupling notification creation directly to user requests, services
+publish relevant events that can be consumed by the Notification Service.
+
+### Notification Flow
+
+```text
+User / Connection / Posts Service
+              │
+              │ Application Event
+              ▼
+           Kafka
+              │
+              ▼
+    Notification Service
+              │
+              ▼
+       Notification Record
+```
+## File Upload & Media Handling
+
+Media uploads are handled by a dedicated Uploader Service, keeping file
+handling separate from the core user and post management services.
+
+The Uploader Service processes image upload requests and provides the media
+handling functionality required by the platform.
+
+### Upload Flow
+
+```text
+Client
+  │
+  │ Image Upload
+  ▼
+API Gateway
+  │
+  ▼
+Uploader Service
+  │
+  ▼
+Media Storage
+  │
+  ▼
+Uploaded Image
+```
+## Kubernetes Deployment
+
+The microservices are containerized using Docker and deployed as independent
+workloads within Kubernetes.
+
+Kubernetes provides the runtime environment for managing the distributed
+services and their internal communication.
+
+### Deployment Architecture
+
+```text
+                    Kubernetes Cluster
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+        ▼                  ▼                  ▼
+   API Gateway       Business Services   Infrastructure
+        │                  │                  │
+        │          ┌───────┼────────┐     Kafka / DB
+        │          │       │        │
+        ▼          ▼       ▼        ▼
+      User      Posts  Connections  Notifications
+     Service    Service   Service      Service
+```
+## Observability
+
+The platform includes centralized logging and distributed tracing to provide
+visibility across the microservice architecture.
+
+### Observability Stack
+
+- **ELK Stack** — centralized application and service logging
+- **Zipkin** — distributed request tracing across microservices
+
+### Logging
+
+Application logs from the distributed services can be collected and
+centralized through the ELK stack, making it easier to inspect service
+behavior and troubleshoot requests across the platform.
+
+### Distributed Tracing
+
+Zipkin provides request tracing across service boundaries, helping follow
+requests as they move through the API Gateway and backend microservices.
+
+```text
+Client
+  │
+  ▼
+API Gateway
+  │
+  ├────► User Service
+  │
+  ├────► Posts Service
+  │
+  └────► Connections Service
+              │
+              ▼
+          Notification Service
+
+              │
+              ▼
+            Zipkin
+```
