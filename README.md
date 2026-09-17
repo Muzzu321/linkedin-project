@@ -143,6 +143,17 @@ Business Service
   ▼
 Another Microservice
 ```
+### Asynchronous Communication
+
+Apache Kafka is used to publish and consume application events between
+services.
+
+```text
+Posts Service ───────┐
+                     │
+Connections Service ─┼──► Kafka ──► Notification Service
+                     │
+User Service ────────┘
 ## Authentication & Authorization
 
 The platform uses JWT-based authentication and authorization to secure access
