@@ -10,9 +10,6 @@ deployable services.
 Synchronous service communication is handled through Spring Cloud OpenFeign,
 while Apache Kafka is used for asynchronous event processing between services.
 
-Synchronous service communication is handled through Spring Cloud and OpenFeign,
-while Apache Kafka is used for asynchronous event processing between services.
-
 ## Features
 
 - User registration, login and profile management
@@ -151,9 +148,8 @@ Another Microservice
 The platform uses JWT-based authentication and authorization to secure access
 to protected APIs.
 
-Authentication is handled through the API Gateway and the User Service, with
-authenticated requests carrying JWT credentials when accessing protected
-resources.
+Authentication is implemented using JWT-based credentials, with protected
+requests routed through the API Gateway to the appropriate services.
 
 ### Authentication Flow
 
