@@ -1,6 +1,14 @@
-# LinkedIn Microservices
+# LinkedIn Microservices Platform
 
-A LinkedIn-style social media application built using a microservice architecture.
+A distributed, microservice-based professional networking platform inspired by
+LinkedIn, built with Java and Spring Boot.
+
+The platform separates user management, professional connections, post
+management, media uploads, and notification processing into independently
+deployable services.
+
+Synchronous service communication is handled through Spring Cloud and OpenFeign,
+while Apache Kafka is used for asynchronous event processing between services.
 
 ## Features
 
