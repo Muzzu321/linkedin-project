@@ -154,3 +154,31 @@ Business Service
   ▼
 Another Microservice
 ```
+## Authentication & Authorization
+
+The platform uses JWT-based authentication and authorization to secure access
+to protected APIs.
+
+Authentication is handled through the API Gateway and the User Service, with
+authenticated requests carrying JWT credentials when accessing protected
+resources.
+
+### Authentication Flow
+
+```text
+Client
+  │
+  │ Login / API Request
+  ▼
+API Gateway
+  │
+  ▼
+User Service
+  │
+  ├──► Authenticate User
+  │
+  └──► Generate / Validate JWT
+             │
+             ▼
+       Protected Services
+```
