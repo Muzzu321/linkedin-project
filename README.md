@@ -37,10 +37,9 @@ The application is split into independent microservices:
 <img width="1200" alt="LinkedIn Microservices Architecture" src="https://github.com/user-attachments/assets/0433da9c-f062-48ab-a511-5029293517d3" />
 
 ## Core Workflows
-
-The platform supports three primary workflows across the microservices:
-user management, social interactions, and event-driven notifications.
-
+The platform supports four primary workflows across the microservices:
+user management, social interactions, media handling, and event-driven
+notifications.
 ### User & Profile Workflow
 
 User registration, authentication, and profile management are handled by the
