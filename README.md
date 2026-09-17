@@ -154,6 +154,7 @@ Posts Service ───────┐
 Connections Service ─┼──► Kafka ──► Notification Service
                      │
 User Service ────────┘
+```
 ## Authentication & Authorization
 
 The platform uses JWT-based authentication and authorization to secure access
