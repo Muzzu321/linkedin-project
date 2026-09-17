@@ -32,17 +32,6 @@ The application is split into independent microservices:
 - Uploader Service
 - Service Discovery
 
-## Technologies
-
-- Java & Spring Boot
-- Spring Cloud / OpenFeign
-- Apache Kafka
-- JWT
-- Docker & Kubernetes
-- PostgreSQL
-- ELK Stack
-- Zipkin
-
 ## Architecture Diagram
 
 <img width="1200" alt="LinkedIn Microservices Architecture" src="https://github.com/user-attachments/assets/0433da9c-f062-48ab-a511-5029293517d3" />
