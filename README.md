@@ -310,6 +310,74 @@ independence, asynchronous processing, and maintainability.
 | JWT Authentication | Provides stateless authentication across protected APIs |
 | Dedicated Media Service | Separates file-upload responsibilities from core business services |
 
+## API Design
+
+The platform exposes REST APIs through the API Gateway. Each microservice
+provides endpoints for its respective business domain.
+
+### 1. User Service — `/auth`
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `POST` | `/auth/signup` | Register a new user |
+| `POST` | `/auth/login` | Login and receive JWT |
+
+### 2. Posts Service — `/core`
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `POST` | `/core` | Create a post with multipart file |
+| `GET` | `/core/{postId}` | Get a post by ID |
+| `GET` | `/core/users/{userId}/allPosts` | Get all posts of a user |
+
+### 3. Post Likes — `/likes`
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `POST` | `/likes/{postId}` | Like a post |
+| `DELETE` | `/likes/{postId}` | Unlike a post |
+
+### 4. Connections Service — `/core`
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `GET` | `/core/{userId}/first-degree` | Get user's first-degree connections |
+| `POST` | `/core/request/{userId}` | Send connection request |
+| `POST` | `/core/accept/{userId}` | Accept connection request |
+| `POST` | `/core/reject/{userId}` | Reject connection request |
+
+### 5. Uploader Service — `/file`
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `POST` | `/file` | Upload a file |
+| `GET` | `/file/{fileName}` | Retrieve/download a file |
+
+### API Summary
+
+The platform currently exposes **13 REST endpoints** across authentication,
+posts, post likes, connections, and file management.
+
+```text
+POST   /auth/signup
+POST   /auth/login
+
+POST   /core
+GET    /core/{postId}
+GET    /core/users/{userId}/allPosts
+
+POST   /likes/{postId}
+DELETE /likes/{postId}
+
+GET    /core/{userId}/first-degree
+POST   /core/request/{userId}
+POST   /core/accept/{userId}
+POST   /core/reject/{userId}
+
+POST   /file
+GET    /file/{fileName}
+```
+
 ## Tech Stack
 
 | Category | Technologies |
