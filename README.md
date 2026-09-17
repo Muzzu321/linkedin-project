@@ -7,6 +7,9 @@ The platform separates user management, professional connections, post
 management, media uploads, and notification processing into independently
 deployable services.
 
+Synchronous service communication is handled through Spring Cloud OpenFeign,
+while Apache Kafka is used for asynchronous event processing between services.
+
 Synchronous service communication is handled through Spring Cloud and OpenFeign,
 while Apache Kafka is used for asynchronous event processing between services.
 
